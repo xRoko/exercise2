@@ -12,3 +12,5 @@ Focus: Use nested loops to render the maze and conditions to check for valid mov
 */
 
 const prompt = require('prompt-sync')();
+
+console.log('Spravil som ulohu');
