@@ -60,7 +60,7 @@ while (exit !== "yes") {
                     break;
             }
             console.log(`Result: ${result}`);
-            exit = "x";
+            exit = "xy";
             while (exit !== "yes" && exit !== "no") {
                 exit = prompt(`Do you want to exit (yes/no): `)
             }
