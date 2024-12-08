@@ -27,24 +27,53 @@ Zaměření: Použijte podmínky k ověření různých kritérií hesla a smyč
 
 const prompt = require('prompt-sync')();
 
+// let password = prompt("Napis heslo ");
+//
+// // kontrola delky hesla
+//        if(password.length > 13) {
+//           console.log("velmi sylné heslo");
+//        } else  if (password.length >= 4 && password.length >= 8 && password.length <= 13) {
+//            console.log("Silne heslo");{
+//            }
+//            } else {
+//            console.log("Stredni heslo");{
+//            }
+//            } else {
+//            console.log("Slabé heslo");{
+//            }
+//
+// }
+// // nesmi obsahovat 1234
+// if(password.includes("Heslo nesmi osahovat 1234")){
+//
+// } else {
+//     console.log("Heslo je v porátku")
+// }
+
+
+// pokus kontroly:
 let password = prompt("Napis heslo ");
 
 // kontrola delky hesla
-       if(password.length > 13) {
-          console.log("velmi sylné heslo");
-       } else  if (password.length >= 4 && password.length >= 8 && password.length <= 13) {
-           console.log("Silne heslo");{
-           }
-           } else {
-           console.log("Stredni heslo");{
-           }
-           } else {
-           console.log("Slabé heslo");{
-           }
+if(password.length > 13) {
+    console.log("velmi sylné heslo");
+} else  if (password.length >= 8 && password.length <= 13) {
+    console.log("Silne heslo");{
+    }
+} else {
+    console.log("Slabé heslo");{
+    }
 
 
 
+// nesmi obsahovat 1234
+if(password.includes = prompt("Heslo nesmi osahovat 1234")){
+    console.log("Heslo nesmi osahovat 1234 je nesprávné heslo");
+    console.log("Heslo nesmi osahovat 1234");
 
 
+} else {
+    console.log("Heslo špatné v porátku napis znovu");{
+    }
 }
-
+}
