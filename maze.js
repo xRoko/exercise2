@@ -12,3 +12,17 @@ Focus: Use nested loops to render the maze and conditions to check for valid mov
 */
 
 const prompt = require('prompt-sync')();
+let gender = prompt('Jsi zena?');
+let age = prompt('Kolik mas roku?');
+
+if (!(parseInt(age) <18)) {
+    if (gander === "ano"){
+        console.log("Welcom");
+    } else {
+        console.log("Sorry, but you are a women!");
+    }
+
+    } else {
+    console.log("Jsi nezletily/a");
+}
+

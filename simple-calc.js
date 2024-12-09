@@ -33,24 +33,21 @@ let sing = prompt("Zadej + - * / ");
 // firstNumber = Number(firstNumber);
 // secondNumber = Number(secondNumber);
 
-if (sing == "+"){
-    console.log(firstNumber +  secondNumber);
+if (sing == "+") {
+    console.log(`${firstNumber + secondNumber}`);
    } else if (sing == "-") {
-       console.log(firstNumber -  secondNumber);
+    console.log(`${firstNumber - secondNumber}`);
+   } else if (sing == "*") {
+    console.log(`${firstNumber * secondNumber}`);
+   } else if (sing == "/") {
+    console.log(`${firstNumber / secondNumber}`);
 
 
-   } else  (sing == "*");{
-       console.log(`${firstNumber *  secondNumber}`);
-    {
-
-    }
-
-    
+   } else {
+    console.log("Tuto matematickou operaci nezna");
 
 
-
-
-
+}
 
 
 

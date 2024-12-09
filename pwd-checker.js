@@ -58,15 +58,17 @@ let password = prompt("Napis heslo ");
 if(password.length > 13) {
     console.log("velmi sylné heslo");
 } else  if (password.length >= 8 && password.length <= 13) {
-    console.log("Silne heslo");{
+    console.log("Stredni heslo");{
     }
+} else  if (password.length >= 4 && password.length <= 7) {
+    console.log("Slabe heslo");{
+    }
+
+
 } else {
     console.log("Slabé heslo");{
     }
-
-
-
-// nesmi obsahovat 1234
+    // nesmi obsahovat 1234
 if(password.includes = prompt("Heslo nesmi osahovat 1234")){
     console.log("Heslo nesmi osahovat 1234 je nesprávné heslo");
     console.log("Heslo nesmi osahovat 1234");
