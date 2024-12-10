@@ -24,20 +24,49 @@ while (length === 0) {
     length = password.length;
 }
 
+let numbers = [0,1,2,3,4,5,6,7,8,9];
+let upper = ["A","B","C","D","E","F", "G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+let special = [
+    "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+",
+    "{", "}", "[", "]", "|", "\\", ":", ";", "\"", "'", "<", ">", ",", ".", "?", "/",
+    "`", "~"
+];
+
+let hasUpper = false;
+let hasNumber = false;
+let hasSpecial = false;
 if (length < 8) {
     console.log(`Password too short. Minimum length is 8.`)
 } else {
-     let strength = 1;
-    let hasNumbers = /\d/.test(password);
-    if (hasNumbers) {
-        strength += 3;
+    let strength = 1;
+    for (let letter of password) {
+        numbers.forEach(number => {
+            if (parseInt(letter) === number) {
+                hasNumber = true;
+            }
+        });
     }
-    let hasUpper = /[A-Z]/.test(password);
-    if (hasUpper) {
-        strength += 3;
+    for (let letter of password) {
+        upper.forEach(char => {
+            if (char === letter ) {
+                hasUpper = true;
+            }
+        });
     }
-    let hasSpecial = /[^a-zA-Z0-9]/.test(password);
+    for (let letter of password) {
+        special.forEach(char => {
+            if (char === letter) {
+                hasSpecial = true;
+            }
+        })
+    }
     if (hasSpecial) {
+        strength += 3;
+    }
+    if (hasNumber) {
+        strength += 3;
+    }
+    if (hasUpper) {
         strength += 3;
     }
     switch (strength) {
