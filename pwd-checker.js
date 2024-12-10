@@ -36,7 +36,7 @@ let hasUpper = false;
 let hasNumber = false;
 let hasSpecial = false;
 if (length < 8) {
-    console.log(`Password too short. Minimum length is 8.`)
+    console.log(`Password is too short. Minimum length is 8.`)
 } else {
     let strength = 1;
     for (let letter of password) {
