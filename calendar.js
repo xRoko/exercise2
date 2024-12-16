@@ -53,3 +53,60 @@ Events:
 */
 
 const prompt = require('prompt-sync')();
+
+console.log('');
+function openCalendarApp() {
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const userMonth = parseInt(prompt('Enter the number of the month you want to print (1-12): '), 10);
+
+    const monthIndex = userMonth - 1;
+
+    const year = parseInt(prompt('Enter the year (for example 2024): '), 10);
+
+
+    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+    const events = {};
+    let addEvent = true;
+    while (addEvent) {
+        const eventDay = parseInt(prompt(`Enter a day (1-${daysInMonth}) to assign an event, or type 0 to stop: `), 10);
+
+        if (eventDay === 0) {
+            addEvent = false;
+        } else if (eventDay >= 1 && eventDay <= daysInMonth) {
+            events[eventDay] = prompt(`Enter the event for day ${eventDay}: `);
+        } else {
+            console.log('Invalid day. Please try again.');
+        }
+    }
+    console.log(`\n${months[monthIndex]} ${year}`);
+
+
+    let line = '';
+    for (let day = 1; day <= daysInMonth; day++) {
+        if (events[day]) {
+
+            line += `[${day}] `;
+        } else {
+
+            line += day.toString().padStart(2, ' ') + ' ';
+        }
+        if (day % 7 === 0 || day === daysInMonth) {
+            console.log(line.trim());
+            line = '';
+        }
+    }
+    console.log('');
+    let calendar = prompt(`Do you want to close calendar app or continue: y/n   `)
+    console.log('');
+    if (calendar === 'y') {
+        openCalendarApp();
+    } else {
+        console.log(`Don't forget for your tasks and events \u{1F92A} !!! \u{1F44B} Goodbye`);
+    }
+}
+openCalendarApp();
