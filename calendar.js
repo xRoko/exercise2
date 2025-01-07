@@ -52,7 +52,7 @@ Events:
 25 - Christmas Day
 */
 
-const prompt = require('prompt-sync')();
+/*const prompt = require('prompt-sync')();
 
 
 const readline = require("readline");
@@ -134,3 +134,83 @@ function menu() {
 
 console.log("Vítejte v jednoduchém kalendáři!");
 menu();
+*/
+
+const readline = require('readline');
+const fs = require('fs');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+let udalosti = {};
+
+function menu() {
+    console.log("\n1. Zobrazit kalendář");
+    console.log("2. Přidat událost");
+    console.log("3. Zobrazit události");
+    console.log("4. Odebrat událost");
+    console.log("5. Ukončit program");
+
+    rl.question("Vyber možnost: ", (odpoved) => {
+        if (odpoved === "1") {
+            console.log("\n=== Kalendář ===");
+            for (let i = 1; i <= 31; i++) {
+                if (udalosti[i]) {
+                    console.log(`${i}. ${udalosti[i]} ⭐`);
+                } else {
+                    console.log(`${i}.`);
+                }
+            }
+            menu();
+        } else if (odpoved === "2") {
+            rl.question("Zadej datum (1-31): ", (datum) => {
+                if (datum >= 1 && datum <= 31) {
+                    rl.question("Zadej název události: ", (nazev) => {
+                        udalosti[datum] = nazev;
+                        console.log(`Událost "${nazev}" přidána k datu ${datum}.`);
+                        menu();
+                    });
+                } else {
+                    console.log("Neplatné datum!");
+                    menu();
+                }
+            });
+        } else if (odpoved === "3") {
+            console.log("\n=== Seznam událostí ===");
+            let maUdalosti = false;
+            for (let i = 1; i <= 31; i++) {
+                if (udalosti[i]) {
+                    console.log(`${i}. ${udalosti[i]}`);
+                    maUdalosti = true;
+                }
+            }
+            if (!maUdalosti) {
+                console.log("Žádné události nejsou přiřazeny.");
+            }
+            menu();
+        } else if (odpoved === "4") {
+            rl.question("Zadej datum k odstranění události (1-31): ", (datum) => {
+                if (udalosti[datum]) {
+                    console.log(`Událost "${udalosti[datum]}" byla odstraněna.`);
+                    delete udalosti[datum];
+                } else {
+                    console.log("Na tomto datu žádná událost není.");
+                }
+                menu();
+            });
+        } else if (odpoved === "5") {
+            console.log("Program ukončen. Nashledanou!");
+            fs.writeFileSync('udalosti.json', JSON.stringify(udalosti)); // Uložení dat před ukončením
+            rl.close();
+        } else {
+            console.log("Neplatná volba, zkus to znovu.");
+            menu();
+        }
+    });
+}
+
+console.log("Vítejte v jednoduchém kalendáři!");
+menu();
+
