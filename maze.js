@@ -44,10 +44,10 @@ let road = [
 ];
 
 
-
+let winner = false;
 let row = 9;
 let column = 1;
-let moves = ["w","a","s","d"];
+let moves = ["w","a","s","d","exit"];
 let move = "Your move"
 while (move !== "exit") {
     for (let row of road) {
@@ -66,7 +66,9 @@ while (move !== "exit") {
                     road[row][column] = "  ";
                     row -= 1;
                 } else if (maze[row - 1][column] === "E ") {
-                    console.log("\n*******You Won!*******")
+                    road[row - 1][column] = "E ";
+                    road[row][column] = "  ";
+                    winner = true;
                     move = "exit";
                 } else {
                     console.log(`\n******* Wrong way, try again. *******`)
@@ -78,7 +80,9 @@ while (move !== "exit") {
                     road[row][column] = "  ";
                     row += 1;
                 } else if (maze[row + 1][column] === "E ") {
-                    console.log("\n*******You Won!*******")
+                    road[row + 1][column] = "E ";
+                    road[row][column] = "  ";
+                    winner = true;
                     move = "exit";
                 } else {
                     console.log(`\n******* Wrong way, try again. *******`)
@@ -90,7 +94,9 @@ while (move !== "exit") {
                     road[row][column] = "  ";
                     column -= 1;
                 } else if (maze[row][column - 1] === "E ") {
-                    console.log("\n*******You Won!*******")
+                    road[row][column - 1] = "E ";
+                    road[row][column] = "  ";
+                    winner = true;
                     move = "exit";
                 } else {
                     console.log(`\n******* Wrong way, try again. *******`)
@@ -102,7 +108,9 @@ while (move !== "exit") {
                     road[row][column] = "  ";
                     column += 1;
                 } else if (maze[row][column + 1] === "E ") {
-                    console.log("\n*******You Won!*******")
+                    road[row][column + 1] = "E ";
+                    road[row][column] = "  ";
+                    winner = true;
                     move = "exit";
                 }
                 else {
@@ -112,5 +120,14 @@ while (move !== "exit") {
         }
     } else {
         console.log("Use w, a, s, d to move or type exit to quit. ")
+    }
+}
+if (winner) {
+    console.log("\n*******You Won!*******")
+    for (let row of road) {
+        for (let letter of row) {
+            process.stdout.write(letter + "");
+        }
+        console.log();
     }
 }
